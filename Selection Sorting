@@ -1,0 +1,52 @@
+#include <stdio.h>
+int Selection(int arr[], int n)
+{
+    int i, j, temp, min;
+    for (i = 0; i < n - 1; i++)
+    {
+        min = i;
+        // Find the Minimum Value Index in a given Array
+        for (j = i + 1; j < n; j++)
+        {
+            if (arr[j] < arr[min])
+            {
+                min = j;
+            }
+        }
+        // Swap the values of the minimum value index and the i th index
+        temp = arr[min];
+        arr[min] = arr[i];
+        arr[i] = temp;
+    }
+    return (arr);
+}
+void display(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d\n", arr[i]);
+    }
+}
+int inputArray(int n)
+{
+    printf("Enter the Elements of the Array :- \n");
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    return (arr);
+}
+void main()
+{
+    int n;
+    printf("Enter the size of the Array:- \n");
+    scanf("%d", &n);
+    int arr;
+    arr = inputArray(n);
+    printf("UnSorted Array:\n");
+    display(arr, n);
+    Selection(arr, n);
+    printf("Sorted Array:\n");
+    display(arr, n);
+}
